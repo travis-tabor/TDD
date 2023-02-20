@@ -10,5 +10,4 @@ graph = [
 
 @testset "TDD.jl" begin
     @test direct_connect(graph,1) == [1,2,3]
-    # Write your tests here.
 end
