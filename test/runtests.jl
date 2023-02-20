@@ -10,4 +10,8 @@ graph = [
 
 @testset "TDD.jl" begin
     @test direct_connect(graph,1) == [1,2,3]
+    @test direct_connect(graph,3) == [1,3]
+    @test reachable(graph,3) == [1,2,3]
+    @test reachable(graph,4) == [4,5]
 end
+
