@@ -24,3 +24,17 @@ function Base.isempty(iv::Interval)
         return false
     end
 end
+
+function Base.issubset(A::Interval, iv::Interval)
+    if in(minimum(A), iv) && in(maximum(A), iv)
+        return true
+    elseif isempty(A)
+        return true
+    else
+        return false
+    end
+end
+
+
+     
+
