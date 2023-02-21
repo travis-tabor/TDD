@@ -10,5 +10,5 @@ b = Interval(5,3)
     @test maximum(a) == 5
     @test in(2.5, a)
     @test isempty(b)
-    
+    @test issubset([1:3],a)
 end
