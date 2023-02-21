@@ -3,6 +3,7 @@ using Test
 
 a = Interval(1,5)
 b = Interval(5,3)
+c = Interval(1,3)
 
 @testset "interval.jl" begin
     @test typeof(a) == Interval
@@ -10,5 +11,5 @@ b = Interval(5,3)
     @test maximum(a) == 5
     @test in(2.5, a)
     @test isempty(b)
-    @test issubset([1:3],a)
+    @test issubset(c,a)
 end
