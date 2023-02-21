@@ -19,4 +19,5 @@ d = Interval(3,6)
     @test intersect(a,c) == Interval(1,3)
     @test intersect(a,d) == Interval(3,5)
     @test repr("text/plain", a) == "\u301a$(a.low), $(a.high)\u301b" 
+    @test repr("text/plain", b) == "∅"
 end
