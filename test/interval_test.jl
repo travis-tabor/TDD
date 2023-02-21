@@ -16,4 +16,5 @@ d = Interval(3,6)
     @test issubset(d,a) == false
     @test issubset(b,a) == true
     @test issubset(a,a) == true
+    @test intersect(a,c) == Interval(1,3)
 end
