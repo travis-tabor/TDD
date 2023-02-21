@@ -18,5 +18,5 @@ d = Interval(3,6)
     @test issubset(a,a) == true
     @test intersect(a,c) == Interval(1,3)
     @test intersect(a,d) == Interval(3,5)
-    @test show(a)     
+    @test show(b) == print("∅")   
 end
