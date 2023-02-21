@@ -35,6 +35,22 @@ function Base.issubset(A::Interval, iv::Interval)
     end
 end
 
-
-     
-
+function Base.intersect(A::Interval, iv:: Interval)
+    if in(minimum(A), iv)
+        b = minimum([maximum(A),maximum(iv)])
+        return Interval(minimum(A), b)
+    elseif in(minimum(iv), A)
+        c = minimum([maximum(A),maximum(iv)])
+        return Interval(minimum(iv),c)
+    elseif in(maximum(A), iv)
+        d = maximum([minimum(A),minimum(iv)])
+        return Interval(d, maximum(A))
+    elseif in(maximum(iv), A)
+        e = maximum([minimum(A),minimum(iv)])
+        return Interval(e, maximum(iv))
+    else
+        return "THe intervals don't overlap"
+    end
+end
+    
+    
