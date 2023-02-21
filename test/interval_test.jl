@@ -15,4 +15,5 @@ d = Interval(3,6)
     @test issubset(c,a) == true
     @test issubset(d,a) == false
     @test issubset(b,a) == true
+    @test issubset(a,a) == true
 end
