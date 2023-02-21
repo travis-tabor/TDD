@@ -53,4 +53,10 @@ function Base.intersect(A::Interval, iv:: Interval)
     end
 end
     
-    
+function Base.show(iv::Interval)
+    if isempty(iv)
+        print('∅')
+    else 
+        print("\u301a$(iv.low), $(iv.high)\u301b")
+    end
+end
