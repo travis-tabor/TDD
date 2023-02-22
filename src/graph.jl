@@ -1,10 +1,14 @@
-export direct_connect, reachable, components
+export direct_connect, reachable, all_jumps, components
 
 function direct_connect(input::Vector, node::Integer)
     return sort(vcat(node, input[node]))
 end
 
-function reachable(input::Vector, node::Integer)
+function direct_connect(input::Matrix{Bool}, node::Integer)
+    return(sort(union(node,findall(input[node,:]))))
+end
+
+function reachable(input, node::Integer)
     visited = []
     stack = [node]
     while length(stack) > 0
@@ -18,14 +22,25 @@ function reachable(input::Vector, node::Integer)
     end
     return sort(visited)
 end
-    
 
-function components(input)
+function all_jumps(input::Vector)
     a = []
     for i in collect(1:length(input))
         a = push!(a,reachable(input,i))
     end
+    return a
+end
 
+function all_jumps(input::Matrix{Bool})
+    a = []
+    for i in collect(1:size(input)[1])
+        a = push!(a,reachable(input,i))
+    end
+    return a
+end
+
+function components(input)
+    a = all_jumps(input)
     out = []
     while length(a) > 0
         first, rest... = a
