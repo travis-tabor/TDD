@@ -23,4 +23,6 @@ directed_graph = [
     @test reachable(graph,3) == [1,2,3]
     @test reachable(directed_graph, 3) == [3]
     @test reachable(directed_graph, 2) == [1,2,3]
+    @test components(graph) == [[1,2,3],[4,5]]
+    @test components(directed_graph) == [[1,2,3]]
 end
