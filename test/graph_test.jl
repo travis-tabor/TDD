@@ -13,6 +13,22 @@ directed_graph = [
           [1],        # list of nodes that can be reached from node 2
           []]        # ", node 3
 
+adj = Bool[
+    1 1 1 0 0;
+    1 1 0 0 0;
+    1 0 1 0 0;
+    0 0 0 1 1;
+    0 0 0 1 1;
+]
+
+adj2 = Bool[
+    0 1 1 0 0;
+    1 0 0 0 0;
+    1 0 0 0 0;
+    0 0 0 0 1;
+    0 0 0 1 0;
+]
+
 @testset "graph_test.jl" begin
     @test direct_connect(graph,1) == [1,2,3]
     @test direct_connect(directed_graph,1) == [1,3]
@@ -25,4 +41,16 @@ directed_graph = [
     @test reachable(directed_graph, 2) == [1,2,3]
     @test components(graph) == [[1,2,3],[4,5]]
     @test components(directed_graph) == [[1,2,3]]
-end
+
+    @test direct_connect(adj,1) == [1,2,3]
+    @test direct_connect(adj,3) == [1,3]
+    @test reachable(adj,1) == [1,2,3]
+    @test reachable(adj,3) == [1,2,3]
+    @test components(adj) == [[1,2,3],[4,5]]
+
+    @test direct_connect(adj2,1) == [1,2,3]
+    @test direct_connect(adj2,3) == [1,3]
+    @test reachable(adj2,1) == [1,2,3]
+    @test reachable(adj2,3) == [1,2,3]
+    @test components(adj2) == [[1,2,3],[4,5]]
+ end
